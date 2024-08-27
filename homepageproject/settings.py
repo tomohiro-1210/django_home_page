@@ -134,3 +134,14 @@ LOGIN_REDIRECT_URL = '/'
 # ログアウト
 LOGOUT_URL = '/logout/'
 LOGOUT_EDIRECT_URL = '/' #自動で飛ばされるのかな？
+
+# --------- massage tab with bootstrap alert class ---------------------
+from django.contrib import messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'rounded-0 alert alert-danger',
+    messages.WARNING: 'rounded-0 alert alert-warning',
+    messages.SUCCESS: 'rounded-0 alert alert-success',
+    messages.INFO: 'rounded-0 alert alert-info',
+    messages.DEBUG: 'rounded-0 alert alert-secondary',
+ }
+# --------- massage tab with bootstrap alert class ---------------------

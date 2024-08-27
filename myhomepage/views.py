@@ -4,6 +4,7 @@ from blog.models import Article
 # ログインやログアウトのテンプレを読み込む
 from django.contrib.auth.views import LoginView, LogoutView
 from myhomepage.forms import *
+from django.contrib import messages
 
 
 # Create your views here.
@@ -24,6 +25,15 @@ def login(request):
 class Login(LoginView):
     template_name = 'mysite/auth.html'
     
+    def form_valid(self, form):
+        messages.success(self.request, 'ログイン完了！！')
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(self.request, 'エラーあり！！！')
+        return super().form_invalid(form)
+    
+    
 # 登録
 def signup(request):
     data = {}
@@ -33,4 +43,6 @@ def signup(request):
             user = form.save(commit=False)
             # user.is_active = False
             user.save()
+            messages.success(request, '登録完了！！')
+            return redirect('/')
     return render(request, 'mysite/auth.html', data)
