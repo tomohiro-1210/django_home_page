@@ -1,9 +1,12 @@
-
 from django.shortcuts import render, redirect
-
 from django.http import HttpResponse
+from blog.models import Article
 
 
 # Create your views here.
 def index(request):
-    return render(request, 'mysite/index.html', {})
+    articles = Article.objects.all()
+    context = {
+        'articles': articles
+    }
+    return render(request, 'mysite/index.html', context)
