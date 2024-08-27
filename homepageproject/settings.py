@@ -124,4 +124,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# ユーザーモデル
 AUTH_USER_MODEL = 'myhomepage.User'
+
+# ログインURL
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
+# ログアウト
+LOGOUT_URL = '/logout/'
+LOGOUT_EDIRECT_URL = '/' #自動で飛ばされるのかな？
