@@ -1,10 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from blog.models import Article
+# ページャー
+from django.core.paginator import Paginator
 
 # Create your views here.
-def blogtop(request):
-    return HttpResponse('ブログTOPページは特に何もありません。')
+def index(request):
+    posts = Article.objects.all()
+    # ページャーを有効化
+    paginator = Paginator(posts, 2)
+    page_number = request.GET.get('page')
+    data = {
+        'posts': posts,
+        'page_obj':paginator.get_page(page_number)
+    }
+    return render(request, 'blog/archive_article.html', data)
 
 # 記事詳細
 def article(request, pk):

@@ -1,0 +1,28 @@
+{% extends 'mysite/base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <h2 class=" border-bottom mb-3 pb-3 font-italic">Hoshitetsu Write Articles</h2>
+            {% for post in posts %}
+            <div class="blog border-bottom" style="margin-bottom: 2rem;">
+                <div class="row mb-3">
+                    <h2 class="blog-post-title col-md-10 col-lg-9 mx-auto">{{ post.title }}</h2>
+                </div>
+                <div class="blog-post col-md-10 col-lg-9 mx-auto mb-3">
+                    <p class="blog-post-meta mb-3" style="text-align: right;">{{ post.create_at }} by  <a href="#">{{ post.author }}</a></p>
+                    <a href="/blog/{{ post.id }}/article" class="mb-2" style="display: block;">続きを読む ></a>
+                </div>
+            </div>
+            {% endfor %}
+            {% include 'mysite/snipets/pager.html' %}
+            <nav class="blog-pagination">
+                <a class="btn btn-outline-primary" href="/">TOPページへ</a>
+            </nav>
+        </div>
+        <!-- サイドバー -->
+    {% include 'mysite/snipets/sidebar.html' %}
+    </div>
+
+{% endblock %}
